@@ -11,9 +11,9 @@
 
 local TTT = gmod.GetGamemode().Name == "Trouble in Terrorist Town"
 
-SWEP.PrintName			    = "Invisibilty Cloak"
-SWEP.Author			        = "Ced"
-SWEP.Instructions		    = "Use this to go invisible!"
+SWEP.PrintName		    = "Invisibilty Cloak"
+SWEP.Author		    = "Ced"
+SWEP.Instructions	    = "Use this to go invisible!"
 
 if TTT then
     SWEP.Base               = "weapon_tttbase"
@@ -29,7 +29,7 @@ if TTT then
         desc                = "Use this to go invisible!"
     }
 
-    SWEP.AllowDrop          = true
+    SWEP.AllowDrop          = false
 
     SWEP.NoSights           = true
 
@@ -41,22 +41,22 @@ end
 SWEP.Spawnable              = true
 SWEP.AdminOnly              = true
 
-SWEP.Slot			        = 1
-SWEP.SlotPos			    = 2
-SWEP.DrawAmmo			    = false
-SWEP.DrawCrosshair		    = false
+SWEP.Slot		    = 1
+SWEP.SlotPos		    = 2
+SWEP.DrawAmmo		    = false
+SWEP.DrawCrosshair	    = false
 
-SWEP.Primary.ClipSize		= -1
-SWEP.Primary.DefaultClip	= -1
-SWEP.Primary.Automatic		= false
-SWEP.Primary.Ammo		    = "none"
+SWEP.Primary.ClipSize	    = -1
+SWEP.Primary.DefaultClip    = -1
+SWEP.Primary.Automatic	    = false
+SWEP.Primary.Ammo	    = "none"
 
-SWEP.Secondary.ClipSize		= -1
-SWEP.Secondary.DefaultClip	= -1
-SWEP.Secondary.Automatic	= false
-SWEP.Secondary.Ammo		    = "none"
+SWEP.Secondary.ClipSize	    = -1
+SWEP.Secondary.DefaultClip  = -1
+SWEP.Secondary.Automatic    = false
+SWEP.Secondary.Ammo	    = "none"
 
-SWEP.ViewModel			    = ""
+SWEP.ViewModel		    = ""
 SWEP.WorldModel             = ""
 
 if CLIENT then
