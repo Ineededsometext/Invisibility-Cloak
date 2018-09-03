@@ -16,6 +16,10 @@ SWEP.Author		    = "Ced"
 SWEP.Instructions	    = "Use this to go invisible!"
 
 if TTT then
+    if SERVER then
+        resource.AddFile("materials/VGUI/ttt/weapon_ttt_invisibility_cloak")
+    end
+
     SWEP.Base               = "weapon_tttbase"
 
     SWEP.Icon               = "VGUI/ttt/weapon_ttt_invisibility_cloak"
@@ -74,7 +78,7 @@ function SWEP:PrimaryAttack()
         self.Owner:SetNWBool("UsingInvisibilityCloak", true)
         self:EmitSound("ced/cloak/ced_cloak_enabled.mp3")
 
-        self.Owner.OldColor = self.Owner:GetColor()
+        self.Owner.InviCloakOldColor = self.Owner:GetColor()
     else
         self.Owner:SetNWBool("UsingInvisibilityCloak", false)
         self:EmitSound("ced/cloak/ced_cloak_disabled.mp3")
@@ -84,13 +88,12 @@ function SWEP:PrimaryAttack()
     self:SetNextSecondaryFire(CurTime() + 1.25)
 end
 
-
 function SWEP:SecondaryAttack()
 	if self.Owner:GetNWBool("UsingInvisibilityCloak") == false then
         self.Owner:SetNWBool("UsingInvisibilityCloak", true)
         self:EmitSound("ced/cloak/ced_cloak_enabled.mp3")
 
-        self.Owner.OldColor = self.Owner:GetColor()
+        self.Owner.InviCloakOldColor = self.Owner:GetColor()
     else
         self.Owner:SetNWBool("UsingInvisibilityCloak", false)
         self:EmitSound("ced/cloak/ced_cloak_disabled.mp3")
@@ -102,8 +105,8 @@ end
 
 function SWEP:Think()
     if self.Owner:Alive() then
-        if self.Owner.OldMaterial == nil then
-            self.Owner.OldMaterial = self.Owner:GetMaterial()
+        if self.Owner.InviCloakOldMaterial == nil then
+            self.Owner.InviCloakOldMaterial = self.Owner:GetMaterial()
         end
 
         if self.Owner.AlphaLerp == nil then
@@ -129,7 +132,7 @@ function SWEP:Think()
                     self.Owner:SetNoTarget(false)
                 end
 
-                self.Owner:SetMaterial(self.Owner.OldMaterial)
+                self.Owner:SetMaterial(self.Owner.InviCloakOldMaterial)
                 self.Owner:SetRenderMode(RENDERMODE_TRANSALPHA)
 
                 self.Owner.AlphaLerp = Lerp(5 * FrameTime(), self.Owner.AlphaLerp, 350)
